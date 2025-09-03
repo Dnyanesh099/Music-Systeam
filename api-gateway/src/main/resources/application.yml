@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: artist-service
+          uri: lb://artist-service
+          predicates:
+            - Path=/artists/**,/contracts/**
+
+        - id: royalty-service
+          uri: lb://royalty-service
+          predicates:
+            - Path=/royalties/**
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

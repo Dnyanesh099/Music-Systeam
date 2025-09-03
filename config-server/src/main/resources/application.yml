@@ -1,0 +1,28 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+
+  profiles:
+    active: native   # 👈 THIS LINE IS CRUCIAL
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///C:/MusicSony/config-repo
+          # Replace this with your actual local folder path
+          # You can also use GitHub if you prefer a remote repo
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+
+
+
