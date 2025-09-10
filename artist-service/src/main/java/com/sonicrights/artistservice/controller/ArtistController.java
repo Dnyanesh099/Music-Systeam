@@ -121,17 +121,4 @@ public class ArtistController {
         return artistService.findAll();
     }
 
-    @GetMapping("/searchMap")
-    public List<Artist> searchArtists1(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String genre) {
-
-        if (name != null) {
-            return artistService.findByName(name);
-        } else if (genre != null) {
-            return artistService.findByGenre(genre);
-        }
-        return artistService.findAll();
-    }
-
 }
